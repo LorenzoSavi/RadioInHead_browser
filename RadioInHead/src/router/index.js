@@ -11,12 +11,12 @@ const routes = [
     path: '/Favorite',
     name: 'Favorite',
 
-    component: () => import(/* webpackChunkName: "about" */ '../views/FavoriteView.vue')
+    component: () => import(/* webpackChunkName: "Favorite" */ '../views/FavoriteView.vue')
   },  {
     path: '/World',
     name: 'World',
 
-    component: () => import(/* webpackChunkName: "about" */ '../views/WorldView.vue')
+    component: () => import(/* webpackChunkName: "World" */ '../views/WorldView.vue')
   },
 ]
 

@@ -23,11 +23,25 @@
           </div>
         </v-card>
       </div>
+
+      <div v-if="selectedRadio" class="radio-control-bar">
+      <div class="control-item">
+        <v-img :src="selectedRadio.favicon ? selectedRadio.favicon : require('../assets/RadioInHeadLogo.jpg')"
+          class="radio-image" :alt="selectedRadio.name" />
+      </div>
+      <div class="control-item">
+        <v-btn @click="togglePlayPause(selectedRadio)" :color="selectedRadio.playing ? 'error' : 'primary'" small>
+          {{ selectedRadio.playing ? 'Pause' : 'Play' }}
+        </v-btn>
+      </div>
+      <div class="control-item">
+        <div class="song-info">{{ selectedRadio.name }}</div>
+      </div>
+    </div>
     </v-container>
   
     <div ref="container" class="world-container"></div>
   
-    <RadioBar :selectedRadio="selectedRadio" :currentSong="currentSong" />
   
   
   </template>
@@ -37,14 +51,14 @@
   import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
   import earthTexture from '../assets/map.jpg';
   import * as mm from 'music-metadata-browser';
-  import RadioBar from '@/components/RadioBar.vue'; // Assicurati di impostare il percorso corretto
+  //import RadioBar from '@/components/RadioBar.vue'; // Assicurati di impostare il percorso corretto
   
   
   export default {
     name: 'WorldView',
-    components: {
-      RadioBar
-    },
+    //components: {
+    //  RadioBar
+    //},
     data() {
       return {
         radios: [],
@@ -427,4 +441,33 @@
   .container {
     margin-right: 50px
   }
+
+  .radio-control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 10px;
+}
+
+.radio-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.control-item {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.song-info {
+  margin-left: 10px;
+}
   </style>

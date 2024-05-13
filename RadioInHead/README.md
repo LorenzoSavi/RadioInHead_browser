@@ -4,6 +4,13 @@
 ```
 npm install
 ```
+### Song Name
+```
+npm install mm
+```
+```
+npm install music-metadata-browser
+```
 
 ### Compiles and hot-reloads for development
 ```
